@@ -1,7 +1,7 @@
 package com.example.ca2android226vivek.model
 
 data class BillModel(
-    val amount: Int = 100,
-    val name: String = "Dinner",
-    val split: Int = 1
+    var amount: Int = 100,
+    var name: String = "Dinner",
+    var split: Int = 1
 )

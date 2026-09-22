@@ -1,23 +1,20 @@
 package com.example.ca2android226vivek.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.example.ca2android226vivek.model.BillModel
 import com.example.ca2android226vivek.repository.BillRepository
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 
 class BillViewModel : ViewModel() {
-    private val repository = BillRepository()
-    
-    private val _billState = MutableStateFlow(repository.getBill())
-    val billState: StateFlow<BillModel> = _billState.asStateFlow()
+    val repo = BillRepository()
+    val billState = MutableStateFlow(repo.getBill())
 
     fun increaseSplit() {
-        _billState.value = repository.incrementSplit()
+        repo.incrementSplit()
+        billState.value = repo.getBill().copy()
     }
 
     fun decreaseSplit() {
-        _billState.value = repository.decrementSplit()
+        repo.decrementSplit()
+        billState.value = repo.getBill().copy()
     }
 }
