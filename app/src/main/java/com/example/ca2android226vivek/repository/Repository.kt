@@ -1,21 +1,15 @@
 package com.example.ca2android226vivek.repository
 
-import com.example.ca2android226vivek.model.BillModel
+import com.example.ca2android226vivek.model.CalculatedData
 
 class BillRepository {
-    private var currentModel = BillModel()
+    private val records = ArrayList<CalculatedData>()
 
-    fun getBill(): BillModel = currentModel
-
-    fun incrementSplit(): BillModel {
-        currentModel = currentModel.copy(split = currentModel.split + 1)
-        return currentModel
+    fun addRecord(record: CalculatedData) {
+        records.add(record)
     }
 
-    fun decrementSplit(): BillModel {
-        if (currentModel.split > 1) {
-            currentModel = currentModel.copy(split = currentModel.split - 1)
-        }
-        return currentModel
+    fun getRecords(): ArrayList<CalculatedData> {
+        return records
     }
 }
